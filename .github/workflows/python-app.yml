@@ -52,7 +52,8 @@ jobs:
     - name: Login to Amazon ECR
       id: login-ecr
       uses: aws-actions/amazon-ecr-login@v1
-     - name: Build and push the tagged docker image to Amazon ECR
+
+    - name: Build and push the tagged docker image to Amazon ECR
       env:
             ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
             ECR_REPOSITORY: ${{ secrets.REPOSITORY_NAME }}
@@ -102,4 +103,3 @@ jobs:
           REPOSITORY_URI: ${{ secrets.REPOSITORY_URI }}
       run: terraform apply -input=false -auto-approve -var="REPOSITORY_URI=${{ secrets.REPOSITORY_URI }}"
       working-directory: terraform
-
