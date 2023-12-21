@@ -36,7 +36,7 @@ resource "aws_lightsail_container_service" "flask_application" {
 resource "aws_lightsail_container_service_deployment_version" "flask_app_deployment" {
   container {
     container_name = "flask-application"
-
+    image = "${var.REPOSITORY_URI}:latest"
    
     
     ports = {
